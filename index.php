@@ -2,7 +2,7 @@
 require_once("cek.php");
 require_once("koneksi.php");
 
-$sql  = "SELECT * FROM mobil";
+$sql  = "SELECT * FROM mobil WHERE status='tersedia'";
 $stmt = $koneksi->prepare($sql);
 $stmt->execute();
 $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -21,6 +21,7 @@ $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		<link rel="stylesheet" href="css/AdminLTE.css">
 		<link rel="stylesheet" href="css/_all-skins.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -41,13 +42,13 @@ $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	        <ul class="nav navbar-nav">
 	          <li class="dropdown user user-menu">
 	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	              <img src="http://lorempixel.com/output/nightlife-q-c-100-100-3.jpg" class="user-image" alt="User Image">
+	              <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="user-image" alt="User Image">
 	              <span class="hidden-xs"><?php echo $_SESSION["user"]["name"];?></span>
 	            </a>
 	            <ul class="dropdown-menu">
 	              <!-- User image -->
 	              <li class="user-header">
-	                <img src="http://lorempixel.com/output/nightlife-q-c-100-100-3.jpg" class="img-circle" alt="User Image">
+	                <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="img-circle" alt="User Image">
 
 	                <p>
 	                  <?php echo $_SESSION["user"]["name"];?>
@@ -70,13 +71,31 @@ $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	      <!-- Sidebar user panel -->
 	      <div class="user-panel">
 	        <div class="pull-left image">
-	          <img src="http://lorempixel.com/output/nightlife-q-c-100-100-3.jpg" class="img-circle" alt="User Image">
+	          <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="img-circle sidebarImage" alt="User Image">
 	        </div>
 	        <div class="pull-left info">
 	          <p><?php echo $_SESSION["user"]["name"];?></p>
 	          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	        </div>
 	      </div>
+	      <ul class="sidebar-menu tree" data-widget="tree">
+	        <li class="header">MAIN NAVIGATION</li>
+	        <li>
+	          <a href="index.php">
+	            <i class="fa fa-home"></i> <span>Dashboard</span>
+	          </a>
+	        </li>
+	        <li>
+	          <a href="profil.php">
+	            <i class="fa fa-user"></i> <span>Profil Saya</span>
+	          </a>
+	        </li>
+	        <li>
+	          <a href="order.php">
+	            <i class="fa fa-upload"></i> <span>Orderan Saya</span>
+	          </a>
+	        </li>
+	       </ul>
 	    </section>
 	  </aside>
 
@@ -86,8 +105,7 @@ $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	    		<?php foreach ($tampil as $tampil) {
 	    		echo "<div class=\"col-lg-4\">";
 	    			echo "<div class=\"box box-widget widget-user\">";
-			            echo "<div class=\"widget-user-header bg-black\" style=\"background: url('http://lorempixel.com/output/nature-q-c-400-400-2.jpg') center center;height: 200px;\">";
-			            echo "</div>";
+              			echo "<img class=\"img-responsive pad\" src=\"" ."uploads/admin/". $tampil['fotoMobil'] . "\" alt=\"Photo\">";
 			            echo "<div class=\"box-footer\">";
 			              	echo "<a href=\"detail.php?id=" .$tampil['idMobil']. "\"><h3 class=\"widget-user-username text-center\">" . $tampil['jenisMobil']. "</h3></a>";
 			              	echo "<h5 class=\"widget-user-desc text-center\">" ."Rp." . $tampil['harga'] . " Per hari" . "</h5>";
