@@ -1,13 +1,3 @@
-<?php
-require_once("cek.php");
-require_once("koneksi.php");
-
-$sql  = "SELECT * FROM mobil WHERE status='tersedia'";
-$stmt = $koneksi->prepare($sql);
-$stmt->execute();
-$tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -42,17 +32,15 @@ $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	        <ul class="nav navbar-nav">
 	          <li class="dropdown user user-menu">
 	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	              <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="user-image" alt="User Image">
-	              <span class="hidden-xs"><?php echo $_SESSION["user"]["name"];?></span>
+	              <img src="uploads/users/" class="user-image" alt="User Image">
+	              <span class="hidden-xs">Nama</span>
 	            </a>
 	            <ul class="dropdown-menu">
 	              <!-- User image -->
 	              <li class="user-header">
-	                <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="img-circle" alt="User Image">
+	                <img src="uploads/users/" class="img-circle" alt="User Image">
 
-	                <p>
-	                  <?php echo $_SESSION["user"]["name"];?>
-	                </p>
+	                <p>Nama </p>
 	              </li>
 	              <li class="user-footer">
 	                <div class="pull-right">
@@ -71,10 +59,10 @@ $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	      <!-- Sidebar user panel -->
 	      <div class="user-panel">
 	        <div class="pull-left image">
-	          <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="img-circle sidebarImage" alt="User Image">
+	          <img src="uploads/users/" class="img-circle sidebarImage" alt="User Image">
 	        </div>
 	        <div class="pull-left info">
-	          <p><?php echo $_SESSION["user"]["name"];?></p>
+	          <p>Nama</p>
 	          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	        </div>
 	      </div>
@@ -102,18 +90,15 @@ $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	  <div class="content-wrapper">
 	    <section class="content">
 	    	<div class="row">
-	    		<?php foreach ($tampil as $tampil) {
-	    		echo "<div class=\"col-lg-4\">";
-	    			echo "<div class=\"box box-widget widget-user\">";
-              			echo "<img class=\"img-responsive pad\" src=\"" ."uploads/admin/". $tampil['fotoMobil'] . "\" alt=\"Photo\">";
-			            echo "<div class=\"box-footer\">";
-			              	echo "<a href=\"detail.php?id=" .$tampil['idMobil']. "\"><h3 class=\"widget-user-username text-center\">" . $tampil['jenisMobil']. "</h3></a>";
-			              	echo "<h5 class=\"widget-user-desc text-center\">" ."Rp." . $tampil['harga'] . " Per hari" . "</h5>";
-			            echo "</div>";
-			        echo "</div>";
-	    		echo "</div>";
-	    		}
-	    		?>
+	    		<div class=\"col-lg-4\">
+	    			<div class=\"box box-widget widget-user\">
+						<img class=\"img-responsive pad\" src="" alt=\"Photo\">
+			            <div class=\"box-footer\">
+			              	<a href=\"detail.php?id=" "\"><h3 class=\"widget-user-username text-center\">" . "</h3></a>
+			              	<h5 class=\"widget-user-desc text-center\">"  " Per hari" . "</h5>
+			            </div>
+			        </div>
+	    		</div>
 	    	</div>
 		</section>
 		</div>
