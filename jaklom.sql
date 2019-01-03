@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 31, 2018 at 03:43 PM
+-- Generation Time: Jan 03, 2019 at 08:46 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -37,13 +37,6 @@ CREATE TABLE `mobil` (
   `status` enum('tersedia','tidak tersedia') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'tersedia',
   `fotoMobil` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default.svg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `mobil`
---
-
-INSERT INTO `mobil` (`idMobil`, `jenisMobil`, `nomorPolisi`, `harga`, `deskripsi`, `status`, `fotoMobil`) VALUES
-(22, 'Mobilio', 'BL 2345 AP', 150000, 'mobilio baru', 'tersedia', '31122018141540.jpg');
 
 -- --------------------------------------------------------
 
@@ -145,7 +138,7 @@ ALTER TABLE `mobil`
 -- AUTO_INCREMENT for table `orderan`
 --
 ALTER TABLE `orderan`
-  MODIFY `idSewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idSewa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ureungpo`
@@ -157,7 +150,7 @@ ALTER TABLE `ureungpo`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
