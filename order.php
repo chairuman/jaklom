@@ -2,11 +2,11 @@
 require_once("cek.php");
 require_once("koneksi.php");
 
-$tabel = "SELECT * FROM orderan WHERE namaPemesan=:user";
+$tabel = "SELECT * FROM orderan WHERE idUser=:user AND status='confirmed' OR status='pending'";
 $tampilTabel = $koneksi->prepare($tabel);
 
 $parameter = array(
-	":user" => $_SESSION['user']['name'],
+	":user" => $_SESSION['user']['id'],
 );
 
 $tampil = $tampilTabel->execute($parameter);
@@ -133,8 +133,11 @@ $tampil = $tampilTabel->execute($parameter);
                   					<td><?php echo $semua['biayaSewa'];?></td>
                   					<td><?php echo $semua['status'];?></td>
                   					<td>
-                  						<a href="cetak.php?id=<?php echo $semua['idSewa'];?>" target="_blank" class="btn btn-warning btn-xs">Print
+                  						<a href="cetak.php?id=<?php echo $semua['idSewa'];?>" target="_blank" class="btn btn-warning btn-sm">cetak
                 							<i class="fa fa-print"></i>
+              							</a>
+              							<a href="hapus.php?id=<?php echo $semua['idSewa'];?>" class="btn btn-danger btn-sm">hapus
+                							<i class="fa fa-trash"></i>
               							</a>
                   					</td>
                 				</tr>
