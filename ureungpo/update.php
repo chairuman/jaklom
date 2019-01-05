@@ -1,50 +1,9 @@
-<<<<<<< HEAD
-=======
-<?php
-require_once("cek.php");
-require_once("../koneksi.php");
-
-$idMobil 	= $_GET['id'];
-$sql 		= "SELECT * FROM mobil WHERE idMobil= $idMobil";
-$namaMobil 	= $koneksi->prepare($sql);
-$namaMobil->execute();
-$tampil 	= $namaMobil->fetch();
-
-if (isset($_POST['simpan'])) {
-	$namaMobil   = filter_input(INPUT_POST, 'namaMobil', FILTER_SANITIZE_STRING);
-	$nomorPolisi = filter_input(INPUT_POST, 'nomorPolisi', FILTER_SANITIZE_STRING);
-	$hargaSewa   = filter_input(INPUT_POST, 'harga', FILTER_SANITIZE_STRING);
-	$deskripsi 	 = filter_input(INPUT_POST, 'deskripsi', FILTER_SANITIZE_STRING);
-
-	$query = "UPDATE mobil SET jenisMobil=:namaMobil, nomorPolisi=:nomorPolisi, harga=:harga, status=:status, deskripsi=:deskripsi WHERE idMobil=$idMobil";
-	$eksekusi = $koneksi->prepare($query);
-
-	$parameter = array(
-		":namaMobil" => $namaMobil,
-		":nomorPolisi" => $nomorPolisi,
-		":harga" => $hargaSewa,
-		":status" => $_POST['status'],
-		":deskripsi" => $deskripsi
-
-	);
-
-	$simpan = $eksekusi->execute($parameter);
-	if ($simpan = TRUE) {
-		echo '<script type="text/javascript">';
-  		echo 'setTimeout(function () { swal("SUKSES!","Data berhasil diubah!","success");';
-  		echo '}, 1000);</script>';
-	}
-}
-
-?>
-
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Edit | Jaklom</title>
+		<title>Update Profil | Jaklom</title>
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="../css/bootstrap.css">
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -73,28 +32,16 @@ if (isset($_POST['simpan'])) {
 	        <ul class="nav navbar-nav">
 	          <li class="dropdown user user-menu">
 	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-<<<<<<< HEAD
-	              <img src="" class="user-image" alt="User Image">
-	              <span class="hidden-xs"></span>
-=======
 	              <img src="<?php echo "../uploads/admin/" . $_SESSION['admin']['photo'];?>" class="user-image" alt="User Image">
 	              <span class="hidden-xs"><?php echo $_SESSION["admin"]["name"];?></span>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	            </a>
 	            <ul class="dropdown-menu">
 	              <!-- User image -->
 	              <li class="user-header">
-<<<<<<< HEAD
-	                <img src="" class="img-circle" alt="User Image">
-
-	                <p>
-	                 Nama
-=======
 	                <img src="<?php echo "../uploads/admin/" . $_SESSION['admin']['photo'];?>" class="img-circle" alt="User Image">
 
 	                <p>
 	                  <?php echo $_SESSION["admin"]["name"];?>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	                </p>
 	              </li>
 	              <li class="user-footer">
@@ -116,17 +63,10 @@ if (isset($_POST['simpan'])) {
 	    <section class="sidebar">
 	      <div class="user-panel">
 	        <div class="pull-left image">
-<<<<<<< HEAD
-	          <img src="" class="img-circle sidebarImage" alt="User Image">
-	        </div>
-	        <div class="pull-left info">
-	          <p>Nama</p>
-=======
 	          <img src="<?php echo "../uploads/admin/" . $_SESSION['admin']['photo'];?>" class="img-circle sidebarImage" alt="User Image">
 	        </div>
 	        <div class="pull-left info">
 	          <p><?php echo $_SESSION["admin"]["name"];?></p>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	        </div>
 	      </div>
@@ -155,56 +95,33 @@ if (isset($_POST['simpan'])) {
 	    <section class="content" style="width: 50%;">
 	    	<div class="box box-primary">
 	    		<div class="box-header with-border">
-<<<<<<< HEAD
-              		<h3 class="box-title">Edit Data Mobil Mobil</h3>
-=======
-              		<h3 class="box-title">Edit Data Mobil <?php echo $tampil['jenisMobil'];?></h3>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
+              		<h3 class="box-title">Perbarui Profil</h3>
             	</div>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
               <div class="box-body">
-              	<div class="form-group">
-                  <label for="namaMobil">Nama Mobil</label>
-<<<<<<< HEAD
-                  <input type="text" class="form-control" id="namaMobil" name="namaMobil"value="" required>
+                <div class="form-group">
+                  <label for="name">Nama Lengkap</label>
+                  <input type="text" class="form-control" id="name" name="name" value="<?php echo $_SESSION["admin"]["name"];?>" required>
                 </div>
                 <div class="form-group">
-                  <label for="nomorPolisi">Nomor Polisi</label>
-                  <input type="text" class="form-control" id="nomorPolisi" name="nomorPolisi" value="" required>
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" name="username" value="<?php echo $_SESSION["admin"]["username"];?>" required>
                 </div>
                 <div class="form-group">
-                  <label for="harga">Harga Sewa Perhari</label>
-                  <input type="text" class="form-control" id="harga" name="harga" value="" required>
-=======
-                  <input type="text" class="form-control" id="namaMobil" name="namaMobil"value="<?php echo $tampil['jenisMobil'];?>" required>
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" value="<?php echo $_SESSION["admin"]["email"];?>" required>
                 </div>
                 <div class="form-group">
-                  <label for="nomorPolisi">Nomor Polisi</label>
-                  <input type="text" class="form-control" id="nomorPolisi" name="nomorPolisi" value="<?php echo $tampil['nomorPolisi'];?>" required>
+                  <label for="password">Password Baru</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="masukkan password baru" required>
                 </div>
                 <div class="form-group">
-                  <label for="harga">Harga Sewa Perhari</label>
-                  <input type="text" class="form-control" id="harga" name="harga" value="<?php echo $tampil['harga'];?>" required>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
-                </div>
-                <div class="form-group">
-                	<label for="status">Status</label>
-	                <select id="status" name="status" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-	                  <option selected="selected">tersedia</option>
-	                  <option>tidak tersedia</option>
-	                </select>
-              	</div>
-              	<div class="form-group">
-                  <label for="deskripsi">Deskripsi</label>
-<<<<<<< HEAD
-                  <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
-=======
-                  <textarea name="deskripsi" id="deskripsi" class="form-control"><?php echo $tampil['deskripsi'];?></textarea>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
+                  <label for="foto">Foto Profil</label>
+                  <input type="file" id="foto" name="foto">
                 </div>
               </div>
               <div class="box-footer">
-                <button name="simpan" type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" id="update" name="update" class="btn btn-primary">Update</button>
               </div>
             </form>
           </div>
@@ -225,15 +142,10 @@ if (isset($_POST['simpan'])) {
 	<script src="../js/fastclick.js"></script>
 	<script src="../js/adminlte.js"></script>
 	<script src="../js/demo.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
 	  $(document).ready(function () {
 	    $('.sidebar-menu').tree()
 	  })
 	</script>
 	</body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
