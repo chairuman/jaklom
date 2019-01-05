@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 03, 2019 at 08:46 AM
+-- Generation Time: Jan 04, 2019 at 04:01 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -47,15 +47,15 @@ CREATE TABLE `mobil` (
 CREATE TABLE `orderan` (
   `idSewa` int(11) NOT NULL,
   `idMobil` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
   `jenisMobil` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `namaPemesan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `emailPemesan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hpPemesan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tanggalPakai` date NOT NULL,
   `tanggalKembali` date NOT NULL,
-  `fotoKtp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `biayaSewa` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` enum('pending','confirmed','','') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending'
+  `status` enum('pending','confirmed','ditolak','') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -78,7 +78,7 @@ CREATE TABLE `ureungpo` (
 --
 
 INSERT INTO `ureungpo` (`id`, `username`, `name`, `email`, `password`, `photo`) VALUES
-(1, 'banguman', 'Admin Ganteng', 'ganteng@mail.com', '$2y$10$HNm7SxT6If7rMdIKHubDi.Z4iivEX.mXnPbBjfAZlElg0Nimrw3BS', '31122018143051.jpg');
+(1, 'banguman', 'Admin Ganteng', 'ganteng@mail.com', '$2y$10$HNm7SxT6If7rMdIKHubDi.Z4iivEX.mXnPbBjfAZlElg0Nimrw3BS', 'avatar.jpg');
 
 -- --------------------------------------------------------
 
@@ -132,13 +132,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `idMobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idMobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `orderan`
 --
 ALTER TABLE `orderan`
-  MODIFY `idSewa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ureungpo`
@@ -150,7 +150,7 @@ ALTER TABLE `ureungpo`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
