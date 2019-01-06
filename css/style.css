@@ -1,0 +1,18 @@
+.sidebarImage{
+	width: 100%;
+	max-width: 45px;
+	height: 45px !important;
+}
+.fotoProfil{
+	width: 100%;
+	max-width: 90px !important;
+	height: 90px !important;
+}
+.gambarTable{
+	width: 40%;
+	height:auto;
+}
+.gambarDetail{
+	width: 100%;
+	height: auto;
+}
