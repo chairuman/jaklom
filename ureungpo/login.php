@@ -5,17 +5,17 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Masuk | Jaklom</title>
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/font-awesome.css">
-		<link rel="stylesheet" href="css/ionicons.css">
-		<link rel="stylesheet" href="css/AdminLTE.css">
-		<link rel="stylesheet" href="css/blue.css">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/font-awesome.css">
+		<link rel="stylesheet" href="../css/ionicons.css">
+		<link rel="stylesheet" href="../css/AdminLTE.css">
+		<link rel="stylesheet" href="../css/blue.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 	</head>
 	<body class="hold-transition login-page">
 		<div class="login-box">
 			<div class="login-logo">
-				<a href="login.php"><b>Jak</b>Lom</a>
+				<a href="../login.php"><b>Jak</b>Lom</a><br><span class="small">Admin Login</span>
 			</div>
 			<div class="login-box-body">
 			    <p class="login-box-msg">silakan masuk dengan akun anda</p>
@@ -36,13 +36,11 @@
 				        </div>
 				    </div>
 			    </form>
-			    <a href="lupa.php">Lupa password</a><br>
-			    <a href="register.php" class="text-center">Belum punya akun?</a>
 			</div>
 		</div>
 
-		<script src="js/jquery.js"></script>
-		<script src="js/bootstrap.js"></script>
-		<script src="js/icheck.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script src="../js/bootstrap.js"></script>
+		<script src="../js/icheck.js"></script>
 	</body>
 </html>
