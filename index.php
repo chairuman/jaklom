@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+<?php
+require_once("cek.php");
+require_once("koneksi.php");
+
+$sql  = "SELECT * FROM mobil WHERE status='tersedia'";
+$stmt = $koneksi->prepare($sql);
+$stmt->execute();
+$tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+>>>>>>> chairuman
 <!DOCTYPE html>
 <html>
 	<head>
