@@ -7,7 +7,6 @@ $stmt = $koneksi->prepare($sql);
 $stmt->execute();
 $tampil = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
