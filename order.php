@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 require_once("cek.php");
 require_once("koneksi.php");
@@ -14,7 +12,6 @@ $parameter = array(
 $tampil = $tampilTabel->execute($parameter);
 ?>
 
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 <!DOCTYPE html>
 <html>
 	<head>
@@ -49,28 +46,16 @@ $tampil = $tampilTabel->execute($parameter);
 	        <ul class="nav navbar-nav">
 	          <li class="dropdown user user-menu">
 	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-<<<<<<< HEAD
-	              <img src="uploads/users/" class="user-image" alt="User Image">
-	              <span class="hidden-xs">></span>
-=======
 	              <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="user-image" alt="User Image">
 	              <span class="hidden-xs"><?php echo $_SESSION["user"]["name"];?></span>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	            </a>
 	            <ul class="dropdown-menu">
 	              <!-- User image -->
 	              <li class="user-header">
-<<<<<<< HEAD
-	                <img src="uploads/users/" class="img-circle" alt="User Image">
-
-	                <p>
-	                  Nama
-=======
 	                <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="img-circle" alt="User Image">
 
 	                <p>
 	                  <?php echo $_SESSION["user"]["name"];?>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	                </p>
 	              </li>
 	              <li class="user-footer">
@@ -90,17 +75,10 @@ $tampil = $tampilTabel->execute($parameter);
 	      <!-- Sidebar user panel -->
 	      <div class="user-panel">
 	        <div class="pull-left image">
-<<<<<<< HEAD
-	          <img src="uploads/users/" class="img-circle sidebarImage" alt="User Image">
-	        </div>
-	        <div class="pull-left info">
-	          <p>Nama</p>
-=======
 	          <img src="uploads/users/<?php echo $_SESSION["user"]["photo"];?>" class="img-circle sidebarImage" alt="User Image">
 	        </div>
 	        <div class="pull-left info">
 	          <p><?php echo $_SESSION["user"]["name"];?></p>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	        </div>
 	      </div>
@@ -147,19 +125,6 @@ $tampil = $tampilTabel->execute($parameter);
                 				</tr>
                 			</thead>
                 			<tbody>
-<<<<<<< HEAD
-     
-                				<tr role="row" class="odd">
-                  					<td>Nama Mobil</td>
-                  					<td>Tanggal Pakai</td>
-                  					<td>Tanggal Kembali</td>
-                  					<td>Biaya Sewa</td>
-                  					<td>Status</td>
-                  					<td>
-                  						<a href="cetak.php?id=" target="_blank" class="btn btn-warning btn-xs">Print
-                							<i class="fa fa-print"></i>
-              							</a>
-=======
                 				<?php while ($semua = $tampilTabel->fetch()):?>
                 				<tr role="row" class="odd">
                   					<td><?php echo $semua['jenisMobil'];?></td>
@@ -174,7 +139,6 @@ $tampil = $tampilTabel->execute($parameter);
               							<a href="hapus.php?id=<?php echo $semua['idSewa'];?>" class="btn btn-danger btn-sm">hapus
                 							<i class="fa fa-trash"></i>
               							</a>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
                   					</td>
                 				</tr>
                 			<?php endwhile;?>
@@ -206,8 +170,4 @@ $tampil = $tampilTabel->execute($parameter);
 	  })
 	</script>
 	</body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983

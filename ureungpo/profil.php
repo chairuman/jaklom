@@ -2,29 +2,10 @@
 require_once("cek.php");
 require_once("../koneksi.php");
 
-$sql  = "SELECT count(*) FROM orderan WHERE status='pending'";
-$stmt = $koneksi->prepare($sql);
-$stmt->execute();
-$hitungOrder = $stmt->fetchColumn(); 
-
-$user = "SELECT count(*) FROM users";
-$siap = $koneksi->prepare($user);
-$siap->execute();
-$hitungUser = $siap->fetchColumn();
-
-$mobil = "SELECT count(*) FROM mobil";
-$cars = $koneksi->prepare($mobil);
-$cars->execute();
-$hitungMobil = $cars->fetchColumn();
-
-$tersedia = "SELECT count(*) FROM mobil WHERE status='tidak tersedia'";
-$ada = $koneksi->prepare($tersedia);
-$ada->execute();
-$hitungTersedia = $ada->fetchColumn();
-
-$tabel = "SELECT * FROM mobil";
+$tabel = "SELECT * FROM orderan WHERE status='pending'";
 $tampilTabel = $koneksi->query($tabel);
 $tampilTabel->setFetchMode(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -33,7 +14,7 @@ $tampilTabel->setFetchMode(PDO::FETCH_ASSOC);
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dashboard | Jaklom</title>
+    <title>Orderan | Jaklom</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -124,71 +105,10 @@ $tampilTabel->setFetchMode(PDO::FETCH_ASSOC);
     <div class="content-wrapper">
       <section class="content-header">
           <h1>
-          Dashboard
+          Orderan Masuk
           </h1>
       </section>
       <section class="content">
-        <div class="row">
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-aqua">
-              <div class="inner">
-                <h3><?php echo $hitungOrder; ?></h3>
-
-                <p>Orderan Masuk</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-green">
-              <div class="inner">
-                <h3><?php echo $hitungMobil;?></h3>
-
-                <p>Mobil Direntalkan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-android-car"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-yellow">
-              <div class="inner">
-                <h3><?php echo $hitungUser;?></h3>
-
-                <p>User Terdaftar</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-red">
-              <div class="inner">
-                <h3><?php echo $hitungTersedia;?></h3>
-
-                <p>Mobil tidak tersedia</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-        </div>
         <div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Semua Mobil</h3>
@@ -221,30 +141,34 @@ $tampilTabel->setFetchMode(PDO::FETCH_ASSOC);
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                       <thead>
                         <tr role="row">
-                          <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 182px;">Jenis Mobil</th>
-                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 225px;">Nomor Polisi</th>
-                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 199px;">Harga Sewa</th>
-                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 156px;">Status</th>
-                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 113px;">Gambar</th>
-                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 70px;"></th>
+                          <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Jenis Mobil</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nama Pemesan</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">HP Pemesan</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Email Pemesan</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Tgl Pakai</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Tgl Kembali</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Biaya</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php while ($semua = $tampilTabel->fetch()):?>
                         <tr role="row" class="odd">
                             <td><?php echo $semua['jenisMobil'];?></td>
-                            <td><?php echo $semua['nomorPolisi'];?></td>
-                            <td><?php echo "Rp.".$semua['harga'];?></td>
-                            <td><?php echo $semua['status'];?></td>
-                            <td><img class="gambarTable" src="<?php echo "../uploads/admin/" . $semua['fotoMobil'];?>"></td>
+                            <td><?php echo $semua['namaPemesan'];?></td>
+                            <td><?php echo $semua['hpPemesan'];?></td>
+                            <td><?php echo $semua['emailPemesan'];?></td>
+                            <td><?php echo $semua['tanggalPakai'];?></td>
+                            <td><?php echo $semua['tanggalKembali'];?></td>
+                            <td><?php echo $semua['biayaSewa'];?></td>
                             <td>
-                              <a href="edit.php?id=<?php echo $semua['idMobil'];?>" class="btn btn-warning btn-xs">
-                              <i class="fa fa-edit"></i>
+                              <a  href="konfirmasi.php?id=<?php echo $semua['idSewa'];?>&mobil=<?php echo $semua['idMobil'];?>" class="btn btn-success btn-sm">
+                              terima
                             </a>
-                              <a href="delete.php?&id=<?php echo $semua['idMobil'];?>" name="delete" class="btn btn-danger btn-xs">
-                              <i class="fa fa-trash"></i>
+                            <a  href="tolak.php?id=<?php echo $semua['idSewa'];?>&mobil=<?php echo $semua['idMobil'];?>" class="btn btn-danger btn-sm">
+                              tolak
                             </a>
-                          </td>
+                            </td>
                         </tr>
                       <?php endwhile;?>
                       </tbody>

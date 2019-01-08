@@ -5,6 +5,7 @@ require_once("koneksi.php");
 $idMobil 	= $_GET['id'];
 $jenisMobil = $_GET['mobil'];
 $harga = $_GET['price'];
+$user = $_SESSION['user']['id'];
 
 if (isset($_POST['booking'])) {
 	$name 			= filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
@@ -14,12 +15,13 @@ if (isset($_POST['booking'])) {
 	$tanggalKembali = filter_input(INPUT_POST, 'tanggalKembali', FILTER_SANITIZE_STRING);
 	$biayaSewa		= filter_input(INPUT_POST, 'total', FILTER_SANITIZE_STRING);
 
-	$sql = "INSERT INTO orderan (idMobil, jenisMobil, namaPemesan, emailPemesan, hpPemesan, tanggalPakai, tanggalKembali, biayaSewa) VALUES (:idMobil, :jenisMobil, :namaPemesan, :emailPemesan, :hpPemesan, :tanggalPakai, :tanggalKembali, :biayaSewa)";
+	$sql = "INSERT INTO orderan (idMobil,idUser, jenisMobil, namaPemesan, emailPemesan, hpPemesan, tanggalPakai, tanggalKembali, biayaSewa) VALUES (:idMobil, :idUser, :jenisMobil, :namaPemesan, :emailPemesan, :hpPemesan, :tanggalPakai, :tanggalKembali, :biayaSewa)";
 
 	$stmt = $koneksi->prepare($sql);
 
 	$parameter = array(
 		":idMobil" 			=> $idMobil,
+		"idUser" 			=> $user,
 		":jenisMobil" 		=> $jenisMobil,
 		":namaPemesan" 		=> $name,
 		":emailPemesan" 	=> $email,
@@ -137,7 +139,7 @@ if (isset($_POST['booking'])) {
 	  </aside>
 
 	  <div class="content-wrapper">
-	    <section style="width: 50%;" class="content">
+	    <section class="content">
 	    	<div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Lengkapi Form Pemesanan Mobil</h3>

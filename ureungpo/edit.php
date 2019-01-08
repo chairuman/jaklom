@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 require_once("cek.php");
 require_once("../koneksi.php");
@@ -38,7 +36,6 @@ if (isset($_POST['simpan'])) {
 
 ?>
 
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 <!DOCTYPE html>
 <html>
 	<head>
@@ -73,28 +70,16 @@ if (isset($_POST['simpan'])) {
 	        <ul class="nav navbar-nav">
 	          <li class="dropdown user user-menu">
 	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-<<<<<<< HEAD
-	              <img src="" class="user-image" alt="User Image">
-	              <span class="hidden-xs"></span>
-=======
 	              <img src="<?php echo "../uploads/admin/" . $_SESSION['admin']['photo'];?>" class="user-image" alt="User Image">
 	              <span class="hidden-xs"><?php echo $_SESSION["admin"]["name"];?></span>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	            </a>
 	            <ul class="dropdown-menu">
 	              <!-- User image -->
 	              <li class="user-header">
-<<<<<<< HEAD
-	                <img src="" class="img-circle" alt="User Image">
-
-	                <p>
-	                 Nama
-=======
 	                <img src="<?php echo "../uploads/admin/" . $_SESSION['admin']['photo'];?>" class="img-circle" alt="User Image">
 
 	                <p>
 	                  <?php echo $_SESSION["admin"]["name"];?>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	                </p>
 	              </li>
 	              <li class="user-footer">
@@ -116,17 +101,10 @@ if (isset($_POST['simpan'])) {
 	    <section class="sidebar">
 	      <div class="user-panel">
 	        <div class="pull-left image">
-<<<<<<< HEAD
-	          <img src="" class="img-circle sidebarImage" alt="User Image">
-	        </div>
-	        <div class="pull-left info">
-	          <p>Nama</p>
-=======
 	          <img src="<?php echo "../uploads/admin/" . $_SESSION['admin']['photo'];?>" class="img-circle sidebarImage" alt="User Image">
 	        </div>
 	        <div class="pull-left info">
 	          <p><?php echo $_SESSION["admin"]["name"];?></p>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
 	          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	        </div>
 	      </div>
@@ -152,30 +130,15 @@ if (isset($_POST['simpan'])) {
 	  </aside>
 
 	  <div class="content-wrapper">
-	    <section class="content" style="width: 50%;">
+	    <section class="content">
 	    	<div class="box box-primary">
 	    		<div class="box-header with-border">
-<<<<<<< HEAD
-              		<h3 class="box-title">Edit Data Mobil Mobil</h3>
-=======
               		<h3 class="box-title">Edit Data Mobil <?php echo $tampil['jenisMobil'];?></h3>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
             	</div>
             <form action="" method="POST">
               <div class="box-body">
               	<div class="form-group">
                   <label for="namaMobil">Nama Mobil</label>
-<<<<<<< HEAD
-                  <input type="text" class="form-control" id="namaMobil" name="namaMobil"value="" required>
-                </div>
-                <div class="form-group">
-                  <label for="nomorPolisi">Nomor Polisi</label>
-                  <input type="text" class="form-control" id="nomorPolisi" name="nomorPolisi" value="" required>
-                </div>
-                <div class="form-group">
-                  <label for="harga">Harga Sewa Perhari</label>
-                  <input type="text" class="form-control" id="harga" name="harga" value="" required>
-=======
                   <input type="text" class="form-control" id="namaMobil" name="namaMobil"value="<?php echo $tampil['jenisMobil'];?>" required>
                 </div>
                 <div class="form-group">
@@ -185,7 +148,6 @@ if (isset($_POST['simpan'])) {
                 <div class="form-group">
                   <label for="harga">Harga Sewa Perhari</label>
                   <input type="text" class="form-control" id="harga" name="harga" value="<?php echo $tampil['harga'];?>" required>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
                 </div>
                 <div class="form-group">
                 	<label for="status">Status</label>
@@ -196,11 +158,7 @@ if (isset($_POST['simpan'])) {
               	</div>
               	<div class="form-group">
                   <label for="deskripsi">Deskripsi</label>
-<<<<<<< HEAD
-                  <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
-=======
                   <textarea name="deskripsi" id="deskripsi" class="form-control"><?php echo $tampil['deskripsi'];?></textarea>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
                 </div>
               </div>
               <div class="box-footer">
@@ -232,8 +190,4 @@ if (isset($_POST['simpan'])) {
 	  })
 	</script>
 	</body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 7caf3e9ec04bbc142e987fe2df4ff2068ce26983
